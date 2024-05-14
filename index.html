@@ -8,7 +8,10 @@
 	<meta property="og:image" content="https://axeltong.github.io/Spoiler/warning.png" />
 </head>
 <body>
-	<div id="output">
+	<h1>
+		Here it is!
+	</h1>
+	<div id="decodedDisplay">
 	
 	</div>
 	
@@ -17,14 +20,38 @@
 		const urlParams = new URLSearchParams(queryString);
 		const base64 = urlParams.get('base64');
 		
-		var output = document.getElementById("output") // get the output
+		var display = document.getElementById("decodedDisplay") // get the output
 		// var message = "Hello world!" // Input
 	
 		// base64 = btoa(message) // base64 encode
 		// noBase64 = atob(base64) // base64 decode
 		decoded = atob(base64)
 		//output.innerHTML = "Encoded: " + base64 + "<br>Decoded: " + noBase64 // Write to div element
-		output.innerHTML = decoded
+		display.innerHTML = decoded
+	</script>
+	<br><br>
+	<h1>
+		Try it yourself!
+	</h1>
+	<p>
+		Input your message here: 
+	</p>
+	<input type="text" id="message" name="message">
+	<button onclick="encode()">encode</button>
+
+	<div id="encodedDisplay">
+	
+	</div>
+	
+	<script>
+		var displayer = document.getElementById("encodedDisplay")
+		var message = document.getElementById("message");
+		function encode() {
+			encoded = btoa(message) // base64 encode
+			var url = "https://axeltong.github.io/Spoiler/?base64=" + encoded
+			displayer.innerHTML = url
+		}
+		
 	</script>
 </body>
 </html>
