@@ -47,9 +47,9 @@
 		var displayer = document.getElementById("encodedDisplay")
 		var message = document.getElementById("message").value;
 		function encode() {
-			encoded = btoa(message) // base64 encode
+			var encoded = btoa(message) // base64 encode
 			var url = "https://axeltong.github.io/Spoiler/?base64=" + encoded
-			displayer.innerHTML = "share this url: " + url
+			displayer.innerHTML = url
 		}
 		
 	</script>
