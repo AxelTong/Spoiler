@@ -36,7 +36,7 @@
 		// base64 = btoa(message) // base64 encode
 		// noBase64 = atob(base64) // base64 decode
 		console.log(base64)
-		var decodeThis = base64.replace(+, "&#43;");
+		var decodeThis = base64.replace(" ", "&#43;");
 		console.log(decodeThis)
 		decoded = sanitize(atob(decodeThis))
 		console.log(decoded)
