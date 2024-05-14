@@ -8,9 +8,7 @@
 	<meta property="og:image" content="https://axeltong.github.io/Spoiler/warning.png" />
 </head>
 <body>
-	<h1>
-		Here it is!
-	</h1>
+	
 	<div id="decodedDisplay">
 	
 	</div>
@@ -27,7 +25,7 @@
 		// noBase64 = atob(base64) // base64 decode
 		decoded = atob(base64)
 		//output.innerHTML = "Encoded: " + base64 + "<br>Decoded: " + noBase64 // Write to div element
-		display.innerHTML = decoded
+		display.innerHTML = "<h1> Here it is! </h1> <br>" + decoded
 		}
 		else {
 			display.innerHTML = ""
