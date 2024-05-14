@@ -35,6 +35,7 @@
 		if (base64) {
 		// base64 = btoa(message) // base64 encode
 		// noBase64 = atob(base64) // base64 decode
+		console.log(base64)
 		decoded = sanitize(atob(base64))
 		console.log(decoded)
 		var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>');
