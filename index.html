@@ -7,13 +7,18 @@
 	</div>
 	
 	<script>
-	  var output = document.getElementById("output") // get the output
-	  var message = "Hello world!" // Input
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const base64 = urlParams.get('base64');
+		
+		var output = document.getElementById("output") // get the output
+		// var message = "Hello world!" // Input
 	
-	  base64 = btoa(message) // base64 encode
-	  noBase64 = atob(base64) // base64 decode
-	
-	  output.innerHTML = "Encoded: " + base64 + "<br>Decoded: " + noBase64 // Write to div element
+		// base64 = btoa(message) // base64 encode
+		// noBase64 = atob(base64) // base64 decode
+		decoded = atob(base64)
+		//output.innerHTML = "Encoded: " + base64 + "<br>Decoded: " + noBase64 // Write to div element
+		output.innerHTML = decoded
 	</script>
 </body>
 </html>
