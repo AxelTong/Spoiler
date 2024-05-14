@@ -35,7 +35,7 @@
 		if (base64) {
 		// base64 = btoa(message) // base64 encode
 		// noBase64 = atob(base64) // base64 decode
-		decoded = sanitize(atob(base64)
+		decoded = sanitize(atob(base64))
 		console.log(decoded)
 		var decodedReady = decodeSanitized.replace(/(\r\n|\r|\n)/g, '<br>');
 		//output.innerHTML = "Encoded: " + base64 + "<br>Decoded: " + noBase64 // Write to div element
