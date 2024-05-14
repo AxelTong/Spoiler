@@ -20,7 +20,7 @@
 		
 		var display = document.getElementById("decodedDisplay") // get the output
 		// var message = "Hello world!" // Input
-		function sanitize(string) {
+		function sanitize(decoded) {
   	const map = {
  	     '&': '&amp;',
  	     '<': '&lt;',
@@ -30,7 +30,7 @@
 	      "/": '&#x2F;',
 	  };
 	  const reg = /[&<>"'/]/ig;
-	  return string.replace(reg, (match)=>(map[match]));
+	  return decoded.replace(reg, (match)=>(map[match]));
 	}
 		if (base64) {
 		// base64 = btoa(message) // base64 encode
@@ -60,7 +60,7 @@
 	</div>
 	
 	<script>
-		function sanitize(string) {
+		function sanitize(message) {
   	const map = {
  	     '&': '&amp;',
  	     '<': '&lt;',
@@ -70,7 +70,7 @@
 	      "/": '&#x2F;',
 	  };
 	  const reg = /[&<>"'/]/ig;
-	  return string.replace(reg, (match)=>(map[match]));
+	  return message.replace(reg, (match)=>(map[match]));
 	}
 		var displayer = document.getElementById("encodedDisplay")
 		function encode() {
