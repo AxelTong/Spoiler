@@ -22,12 +22,16 @@
 		
 		var display = document.getElementById("decodedDisplay") // get the output
 		// var message = "Hello world!" // Input
-	
+		if (base64) {
 		// base64 = btoa(message) // base64 encode
 		// noBase64 = atob(base64) // base64 decode
 		decoded = atob(base64)
 		//output.innerHTML = "Encoded: " + base64 + "<br>Decoded: " + noBase64 // Write to div element
 		display.innerHTML = decoded
+		}
+		else {
+			display.innerHTML = ""
+		}
 	</script>
 	<br><br>
 	<h1>
