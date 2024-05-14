@@ -19,8 +19,7 @@
 		const base64 = urlParams.get('base64');
 		
 		var display = document.getElementById("decodedDisplay") // get the output
-		// var message = "Hello world!" // Input
-		function sanitize(decoded) {
+		function sanitize(decoded) { // convert the dicoded message so that it won't fuck up my code
   	const map = {
  	     '&': '&amp;',
  	     '<': '&lt;',
@@ -32,23 +31,22 @@
 	  const reg = /[&<>"'/]/ig;
 	  return decoded.replace(reg, (match)=>(map[match]));
 	}
-		if (base64) {
-		// base64 = btoa(message) // base64 encode
-		// noBase64 = atob(base64) // base64 decode
+		
+		if (base64) { // check if there is anything in the query
 		console.log(base64)
-		var decodeThis = base64.replace(" ", "+");
+		var decodeThis = base64.replace(" ", "+"); // janky workaround for + becoming space
 		console.log(decodeThis)
-		decoded = sanitize(atob(decodeThis))
+		decoded = sanitize(atob(decodeThis)) // conversion
 		console.log(decoded)
-		var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>');
-		//output.innerHTML = "Encoded: " + base64 + "<br>Decoded: " + noBase64 // Write to div element
-		display.innerHTML = "<h1> Here it is! </h1> <br>" + decodedReady + "<br><br>"
+		var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>'); // get newlines working
+		display.innerHTML = "<h1> Here it is! </h1> <br>" + decodedReady + "<br><br>" // write the text
 		}
 		else {
-			display.innerHTML = ""
+			display.innerHTML = "" // blank if there is nothing encoded
 		}
 	</script>
-	<h1>
+	
+	<h1> 
 		Try it yourself!
 	</h1>
 	<p>
@@ -64,16 +62,16 @@
 
 	</div>
 	<script>
-		var displayer = document.getElementById("encodedDisplay")
+		var displayer = document.getElementById("encodedDisplay") 
 		var whatsApp = document.getElementById("whatsApp")
-		function encode() {
+		function encode() { // encodes the message and generates the URL
 			var message = document.getElementById("message").value
 			console.log(message)
 			var encoded = btoa(message) // base64 encode
 			console.log(encoded)
 			var url = "https://axeltong.github.io/Spoiler/?base64=" + encoded
 			displayer.innerHTML = "Share this link: " + url
-			whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>"
+			whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
 		}
 		
 	</script>
