@@ -1,3 +1,0 @@
-# Spoiler
-
-Spoiler tagging
