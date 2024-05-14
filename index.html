@@ -8,16 +8,25 @@
 	<meta property="og:image" content="https://axeltong.github.io/Spoiler/warning.png" />
 </head>
 <body>
+	<div id="line1">
+
+	</div>
 	
 	<div id="decodedDisplay">
 	
 	</div>
 	
+	<div id="line3">
+
+	</div>
+
+	
 	<script>
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const base64 = urlParams.get('base64');
-		
+		var line1 = document.getElementById("line1")
+		var line3 = document.getElementById("line3")
 		var display = document.getElementById("decodedDisplay") // get the output
 		// var message = "Hello world!" // Input
 		if (base64) {
@@ -26,7 +35,9 @@
 		decoded = atob(base64)
 		console.log(decoded)
 		//output.innerHTML = "Encoded: " + base64 + "<br>Decoded: " + noBase64 // Write to div element
-		display.innerHTML = "<h1> Here it is! </h1> <br>" + decoded + "<br><br>"
+		line1.innerHtml = "<h1> Here it is! </h1> <br>"
+		display.innerHTML = decoded
+		line3.innerHTML = "<br><br>"
 		}
 		else {
 			display.innerHTML = ""
