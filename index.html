@@ -36,9 +36,9 @@
 		// base64 = btoa(message) // base64 encode
 		// noBase64 = atob(base64) // base64 decode
 		decoded = atob(base64)
-		sanitize(decoded)
-		console.log(decoded)
-		var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>');
+		var decodeSanitized = sanitize(decoded)
+		console.log(decodeSanitized)
+		var decodedReady = decodeSanitized.replace(/(\r\n|\r|\n)/g, '<br>');
 		//output.innerHTML = "Encoded: " + base64 + "<br>Decoded: " + noBase64 // Write to div element
 		display.innerHTML = "<h1> Here it is! </h1> <br>" + decodedReady + "<br><br>"
 		}
@@ -75,9 +75,10 @@
 		var displayer = document.getElementById("encodedDisplay")
 		function encode() {
 			var message = document.getElementById("message").value
-			sanitize(message)
+			var sanitizedMessage = sanitize(message)
 			console.log(message)
-			var encoded = btoa(message) // base64 encode
+			console.log(sanitizedMessage)
+			var encoded = btoa(sanitizedMessage) // base64 encode
 			console.log(encoded)
 			var url = "https://axeltong.github.io/Spoiler/?base64=" + encoded
 			displayer.innerHTML = "Share this link: " + url
