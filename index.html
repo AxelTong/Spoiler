@@ -60,9 +60,12 @@
 	<div id="encodedDisplay">
 	
 	</div>
-	
+	<div id="whatsApp"> 
+
+	</div>
 	<script>
 		var displayer = document.getElementById("encodedDisplay")
+		var whatsApp = document.getElementById("whatsApp")
 		function encode() {
 			var message = document.getElementById("message").value
 			console.log(message)
@@ -70,6 +73,7 @@
 			console.log(encoded)
 			var url = "https://axeltong.github.io/Spoiler/?base64=" + encoded
 			displayer.innerHTML = "Share this link: " + url
+			whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>"
 		}
 		
 	</script>
