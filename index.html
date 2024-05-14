@@ -60,25 +60,11 @@
 	</div>
 	
 	<script>
-		function sanitize(message) {
-  	const map = {
- 	     '&': '&amp;',
- 	     '<': '&lt;',
- 	     '>': '&gt;',
-	      '"': '&quot;',
-	      "'": '&#x27;',
-	      "/": '&#x2F;',
-	  };
-	  const reg = /[&<>"'/]/ig;
-	  return message.replace(reg, (match)=>(map[match]));
-	}
 		var displayer = document.getElementById("encodedDisplay")
 		function encode() {
 			var message = document.getElementById("message").value
-			var sanitizedMessage = sanitize(message)
 			console.log(message)
-			console.log(sanitizedMessage)
-			var encoded = btoa(sanitizedMessage) // base64 encode
+			var encoded = btoa(Message) // base64 encode
 			console.log(encoded)
 			var url = "https://axeltong.github.io/Spoiler/?base64=" + encoded
 			displayer.innerHTML = "Share this link: " + url
