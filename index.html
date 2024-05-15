@@ -39,7 +39,22 @@
 		margin: auto;
 		width: 50%;
 	}
-	
+	.encoded {
+		margin: auto;
+		width: 50%;
+		border: 3px solid lightcoral;
+		padding: 10px;
+		border-radius: 10px;
+		text-align: center;
+	}
+	.inputs {
+		margin: auto;
+		width: 50%;
+		border: 3px solid Navy;
+		padding: 10px;
+		border-radius: 10px;
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
@@ -80,20 +95,21 @@
 				display.innerHTML = "" // blank if there is nothing encoded
 			}
 		</script>
-		
-		<h1> 
-			Try it yourself!
-		</h1>
-		<p>
-			Input your message here: 
-		</p>
-		<textarea id="message" name="message" class="textIn"></textarea>
-		<button onclick="encode()">encode</button>
-	
-		<div id="encodedDisplay">
+		<div class="inputs">
+			<h1> 
+				Try it yourself!
+			</h1>
+			<p>
+				Input your message here: 
+			</p>
+			<textarea id="message" name="message" class="textIn"></textarea>
+			<br>
+			<button onclick="encode()">encode</button>
+		</div>
+		<div id="encodedDisplay" class="encoded">
 		
 		</div> 
-		<div id="whatsApp"> 
+		<div id="whatsApp" class="encoded"> 
 	
 		</div>
 		<script>
@@ -106,7 +122,7 @@
 				var encoded = btoa(message) // base64 encode
 				console.log(encoded)
 				url = "https://spoiler.axeltong.be/?base64=" + encoded
-				displayer.innerHTML = "Share this link: " + url + " <button onclick=\"copy()\">Copy link</button>" 
+				displayer.innerHTML = "Share this link: " + url + " <br> <button onclick=\"copy()\">Copy link</button>" 
 				whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
 			}
 			function copy()	{
