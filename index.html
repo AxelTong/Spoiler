@@ -75,9 +75,10 @@
 			whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
 		}
 		function copy()	{
-			navigator.clipboard.writeText(url);
+			var copyUrl = url; 
+			navigator.clipboard.writeText(copyUrl);
 		  	// Alert the copied text
-		  	alert("Copied " + url);
+		  	alert("Copied " + copyUrl);
 		}
 		
 	</script>
