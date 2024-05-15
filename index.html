@@ -116,11 +116,11 @@
 			<br>
 			<button onclick="encode()">encode</button>
 		</div>
-		<br>
+		<div id="space"> </div>
 		<div id="encodedDisplay" class="">
 		
 		</div> 
-		<br>
+		<div id="space"> </div>
 		<div id="whatsApp" class=""> 
 	
 		</div>
@@ -128,6 +128,7 @@
 			var displayer = document.getElementById("encodedDisplay") 
 			var whatsApp = document.getElementById("whatsApp")
 			var url; 
+			var space = document.getElementById("space"
 			function encode() { // encodes the message and generates the URL
 				var message = document.getElementById("message").value
 				console.log(message)
@@ -138,6 +139,7 @@
 				document.getElementById("whatsApp").classList.add('share');
 				displayer.innerHTML = "Share this link: " + url + " <br> <button onclick=\"copy()\">Copy link</button>" 
 				whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
+				space.innerHTML = "<br>"
 			}
 			function copy()	{
 				navigator.clipboard.writeText(url);
