@@ -100,7 +100,7 @@
 			console.log(decoded)
 			var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>'); // get newlines working
 			display.innerHTML = "<h1> Here it is! </h1> <br>" + decodedReady + "<br><br>" // write the text
-			display.classlist.add("decoded")
+			display.classList.add("decoded")
 			}
 			else {
 				display.innerHTML = "" // blank if there is nothing encoded
