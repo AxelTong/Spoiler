@@ -22,84 +22,90 @@
 		width: 50%;
 		border: 3px solid green;
 		padding: 10px;
-		border-radius: 5px;
+		border-radius: 10px;
+		text-align: center;
+	}
+	.content {
+		background-color: white;
+		opacity: 0.5;
 	}
 	
 	</style>
 </head>
 <body>
+	<div class="content">
+		<div id="decodedDisplay" class="decoded">
+		
+		</div>
+		
+		<script>
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const base64 = urlParams.get('base64');
+			
+			var display = document.getElementById("decodedDisplay") // get the output
+			function sanitize(decoded) { // convert the dicoded message so that it won't fuck up my code
+	  	const map = {
+	 	     '&': '&amp;',
+	 	     '<': '&lt;',
+	 	     '>': '&gt;',
+		      '"': '&quot;',
+		      "'": '&#x27;',
+		      "/": '&#x2F;',
+		  };
+		  const reg = /[&<>"'/]/ig;
+		  return decoded.replace(reg, (match)=>(map[match]));
+		}
+			
+			if (base64) { // check if there is anything in the query
+			console.log(base64)
+			var decodeThis = base64.replace(" ", "+"); // janky workaround for + becoming space
+			console.log(decodeThis)
+			decoded = sanitize(atob(decodeThis)) // conversion
+			console.log(decoded)
+			var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>'); // get newlines working
+			display.innerHTML = "<h1> Here it is! </h1> <br>" + decodedReady + "<br><br>" // write the text
+			}
+			else {
+				display.innerHTML = "" // blank if there is nothing encoded
+			}
+		</script>
+		
+		<h1> 
+			Try it yourself!
+		</h1>
+		<p>
+			Input your message here: 
+		</p>
+		<textarea id="message" name="message" rows="10" cols="20"></textarea>
+		<button onclick="encode()">encode</button>
 	
-	<div id="decodedDisplay" class="decoded">
+		<div id="encodedDisplay">
+		
+		</div> 
+		<div id="whatsApp"> 
 	
+		</div>
+		<script>
+			var displayer = document.getElementById("encodedDisplay") 
+			var whatsApp = document.getElementById("whatsApp")
+			var url; 
+			function encode() { // encodes the message and generates the URL
+				var message = document.getElementById("message").value
+				console.log(message)
+				var encoded = btoa(message) // base64 encode
+				console.log(encoded)
+				url = "https://spoiler.axeltong.be/?base64=" + encoded
+				displayer.innerHTML = "Share this link: " + url + " <button onclick=\"copy()\">Copy link</button>" 
+				whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
+			}
+			function copy()	{
+				navigator.clipboard.writeText(url);
+			  	// Alert the copied text
+			  	alert("Copied " + url);
+			}
+			
+		</script>
 	</div>
-	
-	<script>
-		const queryString = window.location.search;
-		const urlParams = new URLSearchParams(queryString);
-		const base64 = urlParams.get('base64');
-		
-		var display = document.getElementById("decodedDisplay") // get the output
-		function sanitize(decoded) { // convert the dicoded message so that it won't fuck up my code
-  	const map = {
- 	     '&': '&amp;',
- 	     '<': '&lt;',
- 	     '>': '&gt;',
-	      '"': '&quot;',
-	      "'": '&#x27;',
-	      "/": '&#x2F;',
-	  };
-	  const reg = /[&<>"'/]/ig;
-	  return decoded.replace(reg, (match)=>(map[match]));
-	}
-		
-		if (base64) { // check if there is anything in the query
-		console.log(base64)
-		var decodeThis = base64.replace(" ", "+"); // janky workaround for + becoming space
-		console.log(decodeThis)
-		decoded = sanitize(atob(decodeThis)) // conversion
-		console.log(decoded)
-		var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>'); // get newlines working
-		display.innerHTML = "<h1> Here it is! </h1> <br>" + decodedReady + "<br><br>" // write the text
-		}
-		else {
-			display.innerHTML = "" // blank if there is nothing encoded
-		}
-	</script>
-	
-	<h1> 
-		Try it yourself!
-	</h1>
-	<p>
-		Input your message here: 
-	</p>
-	<textarea id="message" name="message" rows="10" cols="20"></textarea>
-	<button onclick="encode()">encode</button>
-
-	<div id="encodedDisplay">
-	
-	</div> 
-	<div id="whatsApp"> 
-
-	</div>
-	<script>
-		var displayer = document.getElementById("encodedDisplay") 
-		var whatsApp = document.getElementById("whatsApp")
-		var url; 
-		function encode() { // encodes the message and generates the URL
-			var message = document.getElementById("message").value
-			console.log(message)
-			var encoded = btoa(message) // base64 encode
-			console.log(encoded)
-			url = "https://spoiler.axeltong.be/?base64=" + encoded
-			displayer.innerHTML = "Share this link: " + url + " <button onclick=\"copy()\">Copy link</button>" 
-			whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
-		}
-		function copy()	{
-			navigator.clipboard.writeText(url);
-		  	// Alert the copied text
-		  	alert("Copied " + url);
-		}
-		
-	</script>
 </body>
 </html>
