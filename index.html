@@ -55,6 +55,14 @@
 		border-radius: 10px;
 		text-align: center;
 	}
+	.share {
+		margin: auto;
+		width: 50%;
+		border: 3px solid red;
+		padding: 10px;
+		border-radius: 10px;
+		text-align: center;
+	}
 	</style>
 </head>
 <body>
@@ -123,7 +131,7 @@
 				console.log(encoded)
 				url = "https://spoiler.axeltong.be/?base64=" + encoded
 				document.getElementById("encodedDisplay").classList.add('encoded');
-				document.getElementById("whatsApp").classList.add('encoded');
+				document.getElementById("whatsApp").classList.add('share');
 				displayer.innerHTML = "Share this link: " + url + " <br> <button onclick=\"copy()\">Copy link</button>" 
 				whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
 			}
