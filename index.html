@@ -57,13 +57,14 @@
 
 	<div id="encodedDisplay">
 	
-	</div>
+	</div> <button onclick="copy()">Copy link</button>
 	<div id="whatsApp"> 
 
 	</div>
 	<script>
 		var displayer = document.getElementById("encodedDisplay") 
 		var whatsApp = document.getElementById("whatsApp")
+		var url = ""
 		function encode() { // encodes the message and generates the URL
 			var message = document.getElementById("message").value
 			console.log(message)
@@ -72,6 +73,11 @@
 			var url = "https://spoiler.axeltong.be/?base64=" + encoded
 			displayer.innerHTML = "Share this link: " + url
 			whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
+		}
+		function copy()	{
+			navigator.clipboard.writeText(url.value);
+		  	// Alert the copied text
+		  	alert("Copied " + url.value);
 		}
 		
 	</script>
