@@ -106,10 +106,10 @@
 			<br>
 			<button onclick="encode()">encode</button>
 		</div>
-		<div id="encodedDisplay" class="encoded">
+		<div id="encodedDisplay" class="">
 		
 		</div> 
-		<div id="whatsApp" class="encoded"> 
+		<div id="whatsApp" class=""> 
 	
 		</div>
 		<script>
@@ -122,6 +122,8 @@
 				var encoded = btoa(message) // base64 encode
 				console.log(encoded)
 				url = "https://spoiler.axeltong.be/?base64=" + encoded
+				document.getElementById("encodedDisplay").classList.add('encoded');
+				document.getElementById("whatsApp").classList.add('encoded');
 				displayer.innerHTML = "Share this link: " + url + " <br> <button onclick=\"copy()\">Copy link</button>" 
 				whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
 			}
