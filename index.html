@@ -64,9 +64,6 @@
 		border-radius: 10px;
 		text-align: center;
 	}
-	.invis {
-		visibility: hidden;
-	}
 	</style>
 </head>
 <body>
@@ -121,11 +118,9 @@
 			<button onclick="encode()">encode</button>
 		</div>
 		<div id="space"> </div>
-		<div id="encodedContainer" class="invis">
-			<textarea id="encodedDisplay" class="">
-			
-			</textarea> 
-		</div>
+		<div id="encodedDisplay" class="">
+		
+		</div> 
 		<div id="space2"> </div>
 		<div id="sharing">
 			<div id="whatsApp" class=""> 
@@ -139,15 +134,13 @@
 			var url; 
 			var space = document.getElementById("space")
 			var space2 = document.getElementById("space2")
-			var container = document.getElementById("encodedContainer")
 			function encode() { // encodes the message and generates the URL
 				var message = document.getElementById("message").value
 				console.log(message)
 				var encoded = btoa(message) // base64 encode
 				console.log(encoded)
 				url = "https://spoiler.axeltong.be/?base64=" + encoded
-				encodedContainer.classList.add('encoded');
-				encodedContainer.classlist.remove("invis");
+				displayer.classList.add('encoded');
 				sharing.classList.add('share');
 				displayer.innerHTML = "Share this link: " + url + " <br> <button onclick=\"copy()\">Copy link</button>" 
 				whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
