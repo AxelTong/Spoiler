@@ -122,9 +122,9 @@
 		</div>
 		<div id="space"> </div>
 		<div id="encodedContainer" class="invis">
-			<input type="text" id="encodedDisplay" class="" readonly>
+			<textarea id="encodedDisplay" class="">
 			
-			</input> 
+			</textarea> 
 		</div>
 		<div id="space2"> </div>
 		<div id="sharing">
@@ -147,7 +147,7 @@
 				console.log(encoded)
 				url = "https://spoiler.axeltong.be/?base64=" + encoded
 				encodedContainer.classList.add('encoded');
-				encodedContainer.classlist.remove("invis")
+				encodedContainer.classlist.remove("invis");
 				sharing.classList.add('share');
 				displayer.innerHTML = "Share this link: " + url + " <br> <button onclick=\"copy()\">Copy link</button>" 
 				whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
