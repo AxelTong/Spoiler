@@ -78,6 +78,7 @@
 			const base64 = urlParams.get('base64');
 			
 			var display = document.getElementById("decodedDisplay") // get the output
+			var space3 = document.getElementById("space3")
 			function sanitize(decoded) { // convert the dicoded message so that it won't fuck up my code
 	  	const map = {
 	 	     '&': '&amp;',
@@ -100,12 +101,13 @@
 			var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>'); // get newlines working
 			display.innerHTML = "<h1> Here it is! </h1> <br>" + decodedReady + "<br><br>" // write the text
 			display.classList.add("decoded")
+			space3.innerHTML = "<br>"
 			}
 			else {
 				display.innerHTML = "" // blank if there is nothing encoded
 			}
 		</script>
-		<br>
+		<div id="space3">
 		<div class="inputs">
 			<h1> 
 				Try it yourself!
