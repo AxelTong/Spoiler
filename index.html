@@ -1,160 +1,47 @@
+<!DOCTYPE html>
+
 <html>
-<head>
-	<title> 
-	SPOILER WARNING!!
-	</title>
-	<meta name="description" content="This website is made to be a convenient way of spoiler tagging text when there is no native option available. "/>
-	<meta property="og:title" content="SPOILER WARNING! "/> 
-	<meta property="og:image" content="https://axeltong.github.io/Spoiler/warning.png" />
-	<style>
-	body {
-	  background-color: DodgerBlue;
-	}
-	
-	h1 {
-	  color: black;
-	  text-align: center;
-		z-index: 0;
-	}
-	
-	.decoded {
-		color: #0e151a; 
-		margin: auto;
-		width: 70%;
-		border: 3px solid #82a5ff;
-		padding: 10px;
-		border-radius: 10px;
-		text-align: center;
-	}
-	.content {
-		background-color: #8fc7ff;
-		margin: auto;
-		width: 80%;
-		border: 3px solid #c4dae1;
-		padding: 10px;
-		border-radius: 10px;
-		text-align: center;
-		font-family: Arial, Helvetica, sans-serif;
-	}
-	.textIn {
-		margin: auto;
-		width: 70%;
-	}
-	.encoded {
-		margin: auto;
-		width: 70%;
-		border: 3px solid #82a5ff;
-		padding: 10px;
-		border-radius: 10px;
-		text-align: center;
-	}
-	.inputs {
-		margin: auto;
-		width: 70%;
-		border: 3px solid #82a5ff;
-		padding: 10px;
-		border-radius: 10px;
-		text-align: center;
-	}
-	.share {
-		margin: auto;
-		width: 70%;
-		border: 3px solid #82a5ff;
-		padding: 10px;
-		border-radius: 10px;
-		text-align: center;
-	}
-	</style>
-</head>
-<body>
-	<div class="content">
-		<div id="decodedDisplay" class="">
-		
-		</div>
-		<div id="space3"> </div>
-		<script>
-			const queryString = window.location.search;
-			const urlParams = new URLSearchParams(queryString);
-			const base64 = urlParams.get('base64');
-			
-			var display = document.getElementById("decodedDisplay") // get the output
-			var space3 = document.getElementById("space3")
-			function sanitize(decoded) { // convert the dicoded message so that it won't fuck up my code
-	  	const map = {
-	 	     '&': '&amp;',
-	 	     '<': '&lt;',
-	 	     '>': '&gt;',
-		      '"': '&quot;',
-		      "'": '&#x27;',
-		      "/": '&#x2F;',
-		  };
-		  const reg = /[&<>"'/]/ig;
-		  return decoded.replace(reg, (match)=>(map[match]));
-		}
-			
-			if (base64) { // check if there is anything in the query
-			console.log(base64)
-			var decodeThis = base64.replace(" ", "+"); // janky workaround for + becoming space
-			console.log(decodeThis)
-			decoded = sanitize(atob(decodeThis)) // conversion
-			console.log(decoded)
-			var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>'); // get newlines working
-			display.innerHTML = "<h1> Here it is! </h1> <br>" + decodedReady + "<br><br>" // write the text
-			display.classList.add("decoded")
-			space3.innerHTML = "<br>"
-			}
-			else {
-				display.innerHTML = "" // blank if there is nothing encoded
-			}
-		</script>
-		<div class="inputs">
-			<h1> 
-				Try it yourself!
-			</h1>
-			<p>
-				Input your message here: 
-			</p>
-			<textarea id="message" name="message" class="textIn" rows="10"></textarea>
-			<br>
-			<button onclick="encode()">encode</button>
-		</div>
-		<div id="space"> </div>
-		<div id="encodedDisplay" class="">
-		
-		</div> 
-		<div id="space2"> </div>
-		<div id="sharing">
-			<div id="whatsApp" class=""> 
-		
-			</div>
-		</div>
-		<script>
-			var displayer = document.getElementById("encodedDisplay") 
-			var sharing = document.getElementById("sharing")
-			var whatsApp = document.getElementById("whatsApp")
-			var url; 
-			var space = document.getElementById("space")
-			var space2 = document.getElementById("space2")
-			function encode() { // encodes the message and generates the URL
-				var message = document.getElementById("message").value
-				console.log(message)
-				var encoded = btoa(message) // base64 encode
-				console.log(encoded)
-				url = "https://spoiler.axeltong.be/?base64=" + encoded
-				displayer.classList.add('encoded');
-				sharing.classList.add('share');
-				displayer.innerHTML = "Share this link: " + url + " <br> <button onclick=\"copy()\">Copy link</button>" 
-				whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
-				space.innerHTML = "<br>"
-				space2.innerHTML = "<br>"
-			}
-			function copy()	{
-				navigator.clipboard.writeText(url);
-			  	// Alert the copied text
-			  	alert("Copied " + url);
-			}
-			
-		</script>
-	</div>
-</body>
+    <head>
+        <title> 
+            SPOILER WARNING!!
+        </title>
+        <meta name="description" content="This website is made to be a convenient way of spoiler tagging text when there is no native option available. "/>
+        <meta property="og:title" content="SPOILER WARNING! "/> 
+        <meta property="og:image" content="https://axeltong.github.io/Spoiler/warning.png" />
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+    <body>
+        <div class="content">
+            <div id="decodedDisplay" class="">
+            
+            </div>
+            <div id="space3"> </div>
+            <script src = "decode.js"> </script>
+            <div class="inputs">
+                <h1> 
+                    Try it yourself!
+                </h1>
+                <p>
+                    Input your message here: 
+                </p>
+                <textarea id="message" name="message" class="textIn" rows="10"></textarea>
+                <br>
+                <button onclick="encode()">encode</button>
+            </div>
+            <div id="space"> </div>
+            <div id="encodedDisplay" class="">
+            
+            </div> 
+            <div id="space2"> </div>
+            <div id="sharing">
+                <div id="whatsApp" class=""> 
+            
+                </div>
+            </div>
+            <script src = encode.js>
+                
+            </script>
+        </div>
+    </body>
 </html>
