@@ -1,0 +1,57 @@
+body {
+    background-color: DodgerBlue;
+  }
+  
+  h1 {
+    color: black;
+    text-align: center;
+      z-index: 0;
+  }
+  
+  .decoded {
+      color: #0e151a; 
+      margin: auto;
+      width: 70%;
+      border: 3px solid #82a5ff;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+  }
+  .content {
+      background-color: #8fc7ff;
+      margin: auto;
+      width: 80%;
+      border: 3px solid #c4dae1;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+  .textIn {
+      margin: auto;
+      width: 70%;
+  }
+  .encoded {
+      margin: auto;
+      width: 70%;
+      border: 3px solid #82a5ff;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+  }
+  .inputs {
+      margin: auto;
+      width: 70%;
+      border: 3px solid #82a5ff;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+  }
+  .share {
+      margin: auto;
+      width: 70%;
+      border: 3px solid #82a5ff;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+  }
