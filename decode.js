@@ -16,7 +16,7 @@ var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>'); // get newlines wor
 display.innerHTML = "<h1> Here it is! </h1> <br> <textarea class=\"textOut\">" + decodedReady + "</textarea><br><br>" // write the text
 display.classList.add("decoded")
 space3.innerHTML = "<br>"
-display.removeAttribute(hidden)
+display.removeAttribute("hidden")
 }
 else {
     display.innerHTML = "" // blank if there is nothing encoded
