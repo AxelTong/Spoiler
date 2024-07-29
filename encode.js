@@ -13,10 +13,11 @@ function encode() { // encodes the message and generates the URL
     url = "https://spoiler.axeltong.be/?base64=" + encoded
     displayer.classList.add('encoded');
     sharing.classList.add('share');
-    displayer.innerHTML = "Share this link: " + url + " <br> <button onclick=\"copy()\">Copy link</button>"
+    displayer.innerHTML = "<textarea class=\"textOut\">Share this link: " + url + "</textarea> <br> <br> <button onclick=\"copy()\" class=\"button-2\">Copy link</button>"
     whatsApp.innerHTML = "<a href=\"whatsapp://send?text=" + url + "\" data-action=\"share/whatsapp/share\">Share via Whatsapp</a>" // send whatsapp message
     space.innerHTML = "<br>"
     space2.innerHTML = "<br>"
+    displayer.removeAttribute("hidden")
 }
 function copy() {
     navigator.clipboard.writeText(url);

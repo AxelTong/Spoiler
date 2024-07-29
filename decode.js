@@ -13,7 +13,7 @@ console.log(decodeThis)
 decoded = decodeURIComponent(atob(decodeThis))
 console.log(decoded)
 var decodedReady = decoded.replace(/(\r\n|\r|\n)/g, '<br>'); // get newlines working
-display.innerHTML = "<h1> Here it is! </h1> <br>" + decodedReady + "<br><br>" // write the text
+display.innerHTML = "<h1> Here it is! </h1> <br> <textarea class=\"textOut\">" + decodedReady + "</textarea><br><br>" // write the text
 display.classList.add("decoded")
 space3.innerHTML = "<br>"
 }
