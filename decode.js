@@ -21,5 +21,3 @@ display.removeAttribute("hidden")
 else {
     display.innerHTML = "" // blank if there is nothing encoded
 }
-
-escape
